@@ -13,9 +13,17 @@
     "@emotion/react": "^11.10.8",
     "@emotion/styled": "^11.10.8",
     "@mui/material": "^5.12.3",
+    "@reduxjs/toolkit": "^1.9.5",
+    "axios": "^1.4.0",
+    "formik": "^2.2.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.11.1"
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.11.1",
+    "redux": "^4.2.1",
+    "sweetalert2": "^11.7.5",
+    "toolkit": "^1.5.4",
+    "yup": "^1.1.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

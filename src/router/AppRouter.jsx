@@ -1,42 +1,50 @@
-import { Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { HeroesRoutes } from '../heroes';
 import { LoginPage } from '../auth';
-import { PrivateRoute } from './PrivateRoute';
-import { PublicRoute } from './PublicRoute';
+import { useAuthStore } from '../hooks/useAuthStore';
+import App from '../App';
+
 
 
 export const AppRouter = () => {
+
+    const { status, checkAuthToken } = useAuthStore();
+    // const authStatus = 'not-authenticated'; // 'authenticated'; // 'not-authenticated';
+
+    useEffect(() => {
+        checkAuthToken();
+    }, [])
+    
+
+
+    if ( status === 'checking' ) {
+        return (
+            <h3>Cargando...</h3>
+        )
+    }
+
+    
     return (
-      <>
-  
-          <Routes>
-              
-              <Route path="login/*" element={
-                  <PublicRoute>
-                    {/* <LoginPage /> */}
-                    <Routes>
-                      <Route path="/*" element={<LoginPage />} />
-                    </Routes>
-                  </PublicRoute>
-                }
-              />
-              
-              
-              <Route path="/*" element={
-                <PrivateRoute>
-                  <HeroesRoutes />
-                </PrivateRoute>
-              } />
-  
-              {/* <Route path="login" element={<LoginPage />} /> */}
-              {/* <Route path="/*" element={ <HeroesRoutes />} /> */}
-              
-              
-  
-          </Routes>
-      
-      </>
+        <Routes>
+            {/*
+                ( status === 'not-authenticated')  
+                    ? (
+                        <>
+                            <Route path="/auth/*" element={ <LoginPage /> } />
+                            <Route path="/*" element={ <Navigate to="/auth/login" /> } />
+                        </>
+                    )
+                    : (
+                        <>
+                            <Route path="/" element={ <App /> } />
+                            <Route path="/*" element={ <Navigate to="/" /> } />
+                        </>
+                    )
+                    */}
+                    <Route path="/" element={ <App /> } />
+                    
+
+        </Routes>
     )
-  }
-  
+}

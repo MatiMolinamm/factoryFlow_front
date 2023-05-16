@@ -1,3 +1,4 @@
+export { Add } from "./Add";
 export { Insumos } from "./Insumos";
 export { MateriaPrima } from "./MateriaPrima";
 export { Packaging } from "./Packaging";

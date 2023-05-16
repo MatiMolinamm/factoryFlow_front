@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const NavBar = () => {
   return (
@@ -16,19 +17,19 @@ export const NavBar = () => {
             Agregar
           </a>
           <ul className="dropdown-menu">
-            <li><a className="dropdown-item" href="#">Materia Prima</a></li>
-            <li><a className="dropdown-item" href="#">Insumos</a></li>
-            <li><a className="dropdown-item" href="#">Packaging</a></li>
-            <li><a className="dropdown-item" href="#">Producto</a></li>
+            <li> <Link className="nav-link" to={'addmp'}>Materia Prima</Link></li>
+            <li><Link className="nav-link" to={'addinsumo'}>Insumos</Link></li>
+            <li><Link className="nav-link" to={'addpackaging'}>Packaging</Link></li>
+            <li><Link className="nav-link" to={'addproducto'}>Producto</Link></li>
             <li><hr className="dropdown-divider"/></li>
-            <li><a className="dropdown-item" href="#">Prodcuccion</a></li>
+            <li><Link className="nav-link" to={'addproduccion'}>Produccion</Link></li>
           </ul>
         </li>
        </ul>
-      <form className="d-flex" role="search">
+    {/*  <form className="d-flex" role="search">
         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
         <button className="btn btn-outline-success" type="submit">Search</button>
-      </form>
+  </form>*/}
     </div>
   </div>
 </nav>
