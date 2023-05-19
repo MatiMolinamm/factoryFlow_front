@@ -42,7 +42,7 @@ export const AppRouter = () => {
                         </>
                     )
                     */}
-                    <Route path="/" element={ <App /> } />
+                    <Route path="*" element={ <App /> } />
                     
 
         </Routes>
