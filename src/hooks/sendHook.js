@@ -1,20 +1,42 @@
+import factoryFlowApi from "../api/factoryFlowApi";
 
+export const sendHook = (values, name) => {
+  const { nombre, presentacion, costo, proveedor, categoria, cantidad } =
+    values;
+  let saveForm = {
+    nombre,
+    presentacion,
+    costo,
+    proveedor,
+    categoria,
+    cantidad,
+  };
+  const startSavingEvent = async (route, info) => {
+    const { data } = await factoryFlowApi.post(route, info);
+    console.log(data);
+  };
 
+  switch (name) {
+    case "materia prima":
+      startSavingEvent("mp", saveForm);
+      break;
 
-export const sendHook = (form) => {
- /* let url= 'http://localhost:3000/'
-    emailjs.sendForm('service_sl6d50g', 'template_l70emws', form.current, 'yAaqTd2lcv6huJnXC')
-    .then((result) => {
-        console.log(result.text);
-        alert('Mensaje enviado')
-       
-        }, (error) => {
-        console.log(error.text);
-    });
-  return (
-   url
-  )
-  */
-}
+    case "insumo":
+      startSavingEvent("insumo", saveForm);
+      break;
 
-export default sendHook
+    case "packaging":
+      startSavingEvent("packaging", saveForm);
+      break;
+
+    case "producto":
+      startSavingEvent("producto", saveForm);
+      break;
+    default:
+      console.log("Tipo no reconocido");
+      // Código para manejar casos no reconocidos
+      break;
+  }
+};
+
+export default sendHook;

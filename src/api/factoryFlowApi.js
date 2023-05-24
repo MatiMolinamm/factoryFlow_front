@@ -1,28 +1,20 @@
-import axios from 'axios';
-import { getEnvVariables } from '../helpers/getEnvVariables';
+import axios from "axios";
+import { getEnvVariables } from "../helpers/getEnvVariables";
 
-const { VITE_API_URL } = getEnvVariables()
-
-
-
+const { VITE_API_URL } = getEnvVariables();
 
 const factoryFlowApi = axios.create({
-    baseURL: VITE_API_URL
+  baseURL: VITE_API_URL,
 });
 
 // Todo: configurar interceptores
-factoryFlowApi.interceptors.request.use( config => {
+factoryFlowApi.interceptors.request.use((config) => {
+  config.headers = {
+    ...config.headers,
+    "x-token": localStorage.getItem("token"),
+  };
 
-    config.headers = {
-        ...config.headers,
-        'x-token': localStorage.getItem('token')
-    }
-
-    return config;
-})
-
+  return config;
+});
 
 export default factoryFlowApi;
-
-
-
